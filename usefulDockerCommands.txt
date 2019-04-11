@@ -1,8 +1,31 @@
+# Run a container; will try to pull if does not exist locally
 docker container run -d --name quotes alpine \
   bin/sh -c "while :; do echo "ha"; sleep 5; done"
 
+
+# View containers
 docker container ls -l [-a]
+
 
 docker container stop <container_name or ID>
 
 docker container rm <container_name or ID>
+
+docker container inspect <container_name>
+
+
+# Inspect running containers
+docker container exec <container_name> ps # list running processes in container
+
+# inspect container interactively
+docker container exec -i -t <container_name> /bin/sh
+
+# initialize an environmental var to use in inspection
+docer container exec -it -e MY_VAR="my value" <container_name> /bin/sh
+(In TTY:
+ echo $MY_VAR # MY_VAR is usable
+)
+
+
+docker container attach <container_name> # display output in terminal
+
