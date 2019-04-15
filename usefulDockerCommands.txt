@@ -29,3 +29,22 @@ docer container exec -it -e MY_VAR="my value" <container_name> /bin/sh
 
 docker container attach <container_name> # display output in terminal
 
+
+# Get logs
+docker container logs <container_name>
+docker container logs --tail 5 <container_name> # last 5 only
+docker container logs --tail 5 --follow <container_name> # last 5 then realtime
+
+
+# To configure logging
+emacs /etc/docker/daemon.json # >
+{
+  "Log-driver": "json-log",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": 3
+  }
+}
+
+# put new config into effect:
+sudo kill -SIGHUP $(pidof dockerd) # reloads config daemon (does not restart)
