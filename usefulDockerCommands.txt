@@ -48,3 +48,11 @@ emacs /etc/docker/daemon.json # >
 
 # put new config into effect:
 sudo kill -SIGHUP $(pidof dockerd) # reloads config daemon (does not restart)
+
+
+# Image creation
+# run the alpine image
+docker container run -it --name sample alpine /bin/sh
+# (Inside container:)
+/ # apk update && apk add iputils # use alpine package mgr to install iputils
+
