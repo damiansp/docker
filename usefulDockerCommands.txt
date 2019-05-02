@@ -56,3 +56,9 @@ docker container run -it --name sample alpine /bin/sh
 # (Inside container:)
 / # apk update && apk add iputils # use alpine package mgr to install iputils
 
+docker container diff sample # list differences between base and present image
+# Outputs: A: added; C: changed; D: deleted
+
+docker container commit sample my-alpine # commit
+docker image history my-alpine # history of commits
+
