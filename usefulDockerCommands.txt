@@ -62,3 +62,7 @@ docker container diff sample # list differences between base and present image
 docker container commit sample my-alpine # commit
 docker image history my-alpine # history of commits
 
+
+# Saving and Loading Images
+docker image save -o ./backup/my-alpine.tar my-alpine
+docker image load -i ./backup/my-alpine.tar
